@@ -1,5 +1,5 @@
 {
-"name": "h5-dooring",
+  "name": "h5-dooring",
   "version": "1.4.0",
   "description": "H5-Dooring是一款功能强大，开源免费的H5可视化页面配置解决方案，致力于提供一套简单方便、专业可靠、无限可能的H5落地页最佳实践。技术栈以react为主， 后台采用nodejs开发。",
   "private": false,
@@ -24,8 +24,8 @@
   "scripts": {
     "pkg": "bash install.sh",
     "start": "npm run start:ui & npm run start:editor",
-    "start:editor": "npx lerna exec --scope @h5-dooring/editor -- npm run start",
-    "start:ui": "npx lerna exec --scope @h5-dooring/ui -- npm run start",
+    "start:editor": "set NODE_OPTIONS=--openssl-legacy-provider && npx lerna exec --scope @h5-dooring/editor -- npm run start",
+    "start:ui": "set NODE_OPTIONS=--openssl-legacy-provider && npx lerna exec --scope @h5-dooring/ui -- npm run start",
     "build": "npm run build:ui && npm run build:editor",
     "build:editor": "npx lerna exec --scope @h5-dooring/editor -- npm run build",
     "build:ui": "npx lerna exec --scope @h5-dooring/ui -- npm run build",
@@ -34,13 +34,12 @@
     "server": "node server.js",
     "dev": "http-server dist",
     "test-demo": "http-server dist",
-    "postinstall": "umi generate tmp",
+    "postinstall": "umi setup",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
     "nocompress": "cross-env RM_TMPDIR=none COMPRESS=none umi build"
   },
-
   "homepage": "http://h5.dooring.cn",
   "repository": {
     "type": "git",
@@ -51,5 +50,8 @@
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "webpack": "^5.87.0"
   }
 }
